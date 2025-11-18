@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add New Post</title>
+
+  <style>
+    :root {
+      --bg1: #0f172a;
+      --bg2: #071024;
+      --accent: #7c5cff;
+      --muted: #94a3b8;
+      font-family: "Inter", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      background: linear-gradient(180deg, var(--bg1), var(--bg2));
+      color: #e6eef8;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 700px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 30px;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+
+    .post-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      padding: 25px;
+      border-radius: 16px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 180px;
+      border-radius: 12px;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      font-size: 16px;
+      resize: vertical;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    textarea:focus {
+      border-color: var(--accent);
+      background: rgba(255,255,255,0.1);
+    }
+
+    .btn-add {
+      width: 100%;
+      margin-top: 20px;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 12px;
+      background: var(--accent);
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      transition: 0.2s;
+    }
+
+    .btn-add:hover {
+      background: #8f77ff;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+    }
+
+    .back-link {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .back-link:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>Create a New Post</h1>
+
+    <div class="post-card">
+      <form method="POST">
+        {% csrf_token %}
+
+        <textarea name="{{form.text.name}}" placeholder="What's on your mind?" required></textarea>
+
+        <button class="btn-add" type="submit">ADD</button>
+      </form>
+    </div>
+
+    <a href="/posts" class="back-link">← Back to feed</a>
+
+  </div>
+
+</body>
+</html>
